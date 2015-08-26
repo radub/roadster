@@ -10,7 +10,7 @@ Vagrant.configure(2) do |config|
 	end
 
 	# default vm configuration if no provider is specified
-	config.vm.box = "ubuntu/trusty64"
+	config.vm.box = "puppetlabs/ubuntu-14.04-64-puppet"
 	config.vm.network "forwarded_port", guest: 80, host: 8080
 	config.vm.synced_folder "./", "/vagrant", :nfs => true, :nfs => { :mount_options => ["dmode=777","fmode=777"] }
 	config.vm.synced_folder "../app", "/opt/web", :nfs => true, :nfs => { :mount_options => ["dmode=777","fmode=777"] }
