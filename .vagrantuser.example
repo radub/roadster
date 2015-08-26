@@ -1,0 +1,17 @@
+# This file should not be commited (it was added to .gitignore to make sure this doesn't happen). It's purpose is to hold user specific details that are not to be shared.
+# Configurations in this file are in effect only if Nugrant - Vagrant plugin is installed (https://github.com/maoueh/nugrant).
+#
+# After cloning the vm repo make sure you run: mv .vagrantuser.example .vagrantuser
+#
+# Define in .vagrantuser
+#
+# aws:
+#   access_key: "123456"
+#   secret_key: "qwerty"
+#
+# then use in Vagrantfile
+#
+# config.user.aws.access_key == "123456"
+# config.user.aws.secret_key == "qwerty"
+
+
