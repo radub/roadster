@@ -15,7 +15,7 @@ Spin-up bare bones VMs using different providers and custom user configurations
 - Guest Additions (4.3.22 or later)
 
 ### Vagrant plugins
-- nugrant (2.1.2) https://github.com/maoueh/nugrant#installation
+- nugrant (2.1.2 or later) https://github.com/maoueh/nugrant#installation
 
 ### Inside the VM
 - Puppet (4.2.1 or later)
