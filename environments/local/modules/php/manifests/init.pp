@@ -18,7 +18,7 @@ class php {
 
   package { $packages:
     ensure => present,
-    require => Exec["yum update"]
+    require => Exec["apt-get update"]
   }
 
 }

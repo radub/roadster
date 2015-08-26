@@ -1,61 +1,77 @@
 class apache {
 
   # install apache
-  package { "httpd":
+  package { "apache2":
     ensure => present,
-    require => Exec["yum update"]
+    require => Exec["apt-get update"]
   }
 
-  # ensures that mode_rewrite is loaded and modifies the default configuration file
-  #
-  # !!! it looks like mod_rewrite is enabled by default
-  #
-#  file { "/etc/httpd/mods-enabled/rewrite.load":
-#    ensure => link,
-#    target => "/etc/httpd/mods-available/rewrite.load",
-#    require => Package["httpd"]
-#  }
-
-  # create directory
-  file {"/etc/httpd/sites-enabled":
+  # make sure sites-available directory exists
+  file {"/etc/apache2/sites-available":
     ensure => directory,
     recurse => true,
     purge => true,
     force => true,
-    before => File["/etc/httpd/sites-enabled/web.conf"],
-    require => Package["httpd"],
+    before => File["/etc/apache2/sites-available/web.conf"],
+    require => Package["apache2"],
   }
 
-  # create apache config from main vagrant manifests
-  file { "/etc/httpd/sites-available/web.conf":
+  # make sure sites-enabled directory exists
+  file {"/etc/apache2/sites-enabled":
+    ensure => directory,
+    recurse => true,
+    purge => true,
+    force => true,
+    before => File["/etc/apache2/sites-enabled/web.conf"],
+    require => Package["apache2"],
+  }
+
+  # create vhost from assets
+  file { "/etc/apache2/sites-available/web.conf":
     ensure => present,
-    source => "/vagrant/vm-pp/manifests/assets/vhost.conf",
-    require => Package["httpd"],
+    source => "/vagrant/environments/local/modules/apache/assets/vhost.conf",
+    require => Package["apache2"],
   }
 
-  # symlink apache site to the site-enabled directory
-  file { "/etc/httpd/sites-enabled/web.conf":
+  # create vhost-ssl from assets
+  file { "/etc/apache2/sites-available/web-ssl.conf":
+    ensure => present,
+    source => "/vagrant/environments/local/modules/apache/assets/vhost-ssl.conf",
+    require => Package["apache2"],
+  }
+
+  # enable site
+  file { "/etc/apache2/sites-enabled/web.conf":
     ensure => link,
-    target => "/etc/httpd/sites-available/web.conf",
-    require => File["/etc/httpd/sites-available/web.conf"],
-    notify => Service["httpd"],
+    target => "/etc/apache2/sites-available/web.conf",
+    require => File["/etc/apache2/sites-available/web.conf"],
+    notify => Service["apache2"],
   }
 
-  # starts the apache2 service once the packages installed, and monitors changes to its configuration files and reloads if nesessary
-  service { "httpd":
+  # enable site-ssl
+  file { "/etc/apache2/sites-enabled/web-ssl.conf":
+    ensure => link,
+    target => "/etc/apache2/sites-available/web-ssl.conf",
+    require => File["/etc/apache2/sites-available/web-ssl.conf"],
+    notify => Service["apache2"],
+  }
+
+  # starts the apache2 service once the packages installed, and monitors changes to its configuration files and reloads if necessary
+  service { "apache2":
     ensure => running,
-    require => Package["httpd"],
+    require => Package["apache2"],
     subscribe => [
-      File["/etc/httpd/mods-enabled/rewrite.load"],
-      File["/etc/httpd/sites-available/web.conf"]
+      File["/etc/apache2/sites-enabled/web.conf"],
+      File["/etc/apache2/sites-enabled/web-ssl.conf"]
     ],
   }
 
+  # symlink application code to web root directory
   file {"/var/www/web":
     ensure => "link",
-    target => "/vagrant/app",
-    require => Package["httpd"],
-    notify => Service["httpd"],
+    target => "/opt/web",
+    require => Package["apache2"],
+    notify => Service["apache2"],
     replace => yes,
     force => true,
   }
