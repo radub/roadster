@@ -17,4 +17,14 @@
 # config.user.aws.access_key == "123456"
 # config.user.aws.secret_key == "qwerty"
 
-
+vm:
+    name:       "custom-vm-name-usually-the-application-or-site-name"
+    memory:     1024
+    show_gui:   false
+    box:        "puppetlabs/ubuntu-14.04-64-puppet"
+    box_url:    ""
+    network:
+        ip: "192.168.58.100"
+app:
+    code:
+        directory:  "../app"
