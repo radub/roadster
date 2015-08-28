@@ -22,7 +22,7 @@ Vagrant.configure(2) do |config|
 
 	# provisioner setup
 	config.vm.provision "puppet" do |puppet|
-		puppet.options = ['--verbose --debug']
+		# puppet.options = ['--verbose --debug']
 		puppet.environment_path = "environments"
     		puppet.environment = "local"
 	end
