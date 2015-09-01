@@ -25,6 +25,9 @@ vm:
     box_url:    ""
     network:
         ip: "192.168.58.100"
+    host:
+        hostname: "example.local"
+        alias   : []
 app:
     code:
         directory:  "../app"
