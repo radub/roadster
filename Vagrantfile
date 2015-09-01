@@ -15,7 +15,7 @@ Vagrant.configure(2) do |config|
 	config.vm.synced_folder "./", "/vagrant", :nfs => true, :nfs => { :mount_options => ["dmode=777","fmode=777"] }
 	config.vm.synced_folder config.user.app.code.directory, "/opt/web", :nfs => true, :nfs => { :mount_options => ["dmode=777","fmode=777"] } if !config.user.app.code.directory.to_s.empty?
 
-    # provider virtualbox
+    	# provider virtualbox
 	config.vm.provider :virtualbox do |virtualbox|
 		virtualbox.gui = config.user.vm.show_gui if !config.user.vm.show_gui.to_s.empty?
 		virtualbox.customize ["modifyvm", :id, "--name", config.user.vm.name] if !config.user.vm.name.to_s.empty?
