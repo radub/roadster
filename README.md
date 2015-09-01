@@ -16,6 +16,7 @@ Spin-up bare bones VMs using different providers and custom user configurations
 
 ### Vagrant plugins
 - nugrant (2.1.2 or later) https://github.com/maoueh/nugrant#installation
+- vagrant-hostsupdater (0.0.11) https://github.com/cogitatio/vagrant-hostsupdater
 
 ### Inside the VM
 - Puppet (4.2.1 or later)
