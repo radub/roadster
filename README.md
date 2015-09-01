@@ -1,4 +1,4 @@
-# vm-pp-multi
+# Roadster
 
 [![Build Status](https://travis-ci.org/radub/roadster.svg?branch=master)][travis]
 
