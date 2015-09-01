@@ -6,6 +6,8 @@ Vagrant.configure(2) do |config|
 	# default vm configuration
 	config.vm.box = config.user.vm.box if !config.user.vm.box.to_s.empty?
 	config.vm.box_url = config.user.vm.box_url if !config.user.vm.box_url.to_s.empty?
+    config.vm.hostname = config.user.vm.host.hostname if !config.user.vm.host.hostname.to_s.empty?
+    config.hostsupdater.aliases = config.user.vm.host.alias if !config.user.vm.host.alias.empty?
 
 	config.vm.network "forwarded_port", guest: 80, host: 8080
 	config.vm.network :private_network, ip: config.user.vm.network.ip if !config.user.vm.network.ip.to_s.empty?
