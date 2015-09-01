@@ -1,8 +1,8 @@
 # vm-pp-multi
 
-[![Build Status](https://travis-ci.org/radub/vm-pp-multi.svg?branch=master)][travis]
+[![Build Status](https://travis-ci.org/radub/roadster.svg?branch=master)][travis]
 
-[travis]: http://travis-ci.org/radub/vm-pp-multi
+[travis]: http://travis-ci.org/radub/roadster
 
 # Purpose
 Spin-up bare bones VMs using different providers and custom user configurations 
