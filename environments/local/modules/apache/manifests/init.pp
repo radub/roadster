@@ -66,6 +66,14 @@ class apache {
     ],
   }
 
+  # enable apache mod_rewrite
+  exec { "a2enmod-rewrite":
+    creates => "/etc/apache2/mods-enabled/rewrite.load",
+    command => "/usr/sbin/a2enmod rewrite",
+    require => Package["apache2"],
+    notify  => Service["apache2"],
+  }
+
   # symlink application code to web root directory
   file {"/var/www/web":
     ensure => "link",
