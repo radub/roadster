@@ -10,6 +10,7 @@ Vagrant.configure(2) do |config|
     config.hostsupdater.aliases = config.user.vm.host.alias if !config.user.vm.host.alias.empty?
 
     config.vm.network "forwarded_port", guest: 80, host: 8080
+    config.vm.network "forwarded_port", guest: 443, host: 4443
     config.vm.network :private_network, ip: config.user.vm.network.ip if !config.user.vm.network.ip.to_s.empty?
 
     config.vm.synced_folder "./", "/vagrant", :nfs => true, :nfs => { :mount_options => ["dmode=777","fmode=777"] }
