@@ -3,7 +3,7 @@
 
 Vagrant.configure(2) do |config|
 
-	# default vm configuration
+    # default vm configuration
     config.vm.box = config.user.vm.box if !config.user.vm.box.to_s.empty?
     config.vm.box_url = config.user.vm.box_url if !config.user.vm.box_url.to_s.empty?
     config.vm.hostname = config.user.vm.host.hostname if !config.user.vm.host.hostname.to_s.empty?
