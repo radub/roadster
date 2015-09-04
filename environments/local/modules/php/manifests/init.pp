@@ -13,8 +13,11 @@ class php {
     "php5-curl",
     "php5-gd",
     "php5-mcrypt",
+    "php5-ldap",
     "libapache2-mod-php5"
   ]
+
+  # @TODO enable php5-mcrypt: sudo php5enmod mcrypt
 
   package { $packages:
     ensure => present,
