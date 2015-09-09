@@ -25,6 +25,9 @@ vm:
     box_url:    ""
     network:
         ip: "192.168.58.100"
+        forwarded_port:
+            http: 8080
+            https: 4443
     host:
         hostname: "example.local"
         alias   : []
