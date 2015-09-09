@@ -9,8 +9,8 @@ Vagrant.configure(2) do |config|
     config.vm.hostname = config.user.vm.host.hostname if !config.user.vm.host.hostname.to_s.empty?
     config.hostsupdater.aliases = config.user.vm.host.alias if !config.user.vm.host.alias.empty?
 
-    config.vm.network "forwarded_port", guest: 80, host: config.user.vm.network.forwarded_port.http] if !config.user.vm.network.forwarded_port.http.to_s.empty?
-    config.vm.network "forwarded_port", guest: 443, host: config.user.vm.network.forwarded_port.https] if !config.user.vm.network.forwarded_port.https.to_s.empty?
+    config.vm.network "forwarded_port", guest: 80, host: config.user.vm.network.forwarded_port.http if !config.user.vm.network.forwarded_port.http.to_s.empty?
+    config.vm.network "forwarded_port", guest: 443, host: config.user.vm.network.forwarded_port.https if !config.user.vm.network.forwarded_port.https.to_s.empty?
     config.vm.network :private_network, ip: config.user.vm.network.ip if !config.user.vm.network.ip.to_s.empty?
 
     config.vm.synced_folder "./", "/vagrant", :nfs => true, :nfs => { :mount_options => ["dmode=777","fmode=777"] }
