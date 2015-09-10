@@ -39,11 +39,12 @@ class php {
     require => [ Package['php5-ldap'], Package['apache2'] ],
     notify  => Service["apache2"]
   }
-  
+
   file { "/etc/php5/mods-available/xdebug.ini":
     ensure => present,
     source => "/vagrant/environments/local/modules/php/assets/xdebug.conf",
-    require => [ Package["apache2"], Package["php5-xdebug"] ]
+    require => [ Package["apache2"], Package["php5-xdebug"] ],
+    notify  => Service["apache2"]
   }
 
 }
