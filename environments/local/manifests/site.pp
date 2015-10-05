@@ -7,3 +7,4 @@ include apache
 include php
 include mysql
 include tools
+include tools::jenkins

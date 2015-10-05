@@ -20,11 +20,5 @@ class tools {
     require => Package['curl'],
   }
 
-#  -> exec { 'drush-install':
-#    command => 'composer global require drush/drush:dev-master',
-#    environment => ["COMPOSER_HOME=/usr/local/bin"],
-#    path    => '/usr/bin:/usr/local/bin:~/.composer/vendor/bin/',
-#    require => Exec['composer-install']
-#  }
 
 }
