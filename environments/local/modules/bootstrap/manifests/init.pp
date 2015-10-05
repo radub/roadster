@@ -10,4 +10,9 @@ class bootstrap {
     command => '/usr/bin/apt-get update -y'
   }
 
+  # fix locale
+  exec { 'locale-gen':
+    command => 'sudo locale-gen "en_US.UTF-8"'
+  }
+
 }
