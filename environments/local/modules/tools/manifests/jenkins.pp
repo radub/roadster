@@ -1,13 +1,16 @@
 class tools::jenkins {
-
-# package install list
+  # package install list
   $packages = [
     "jenkins"
   ]
 
-  exec { 'update-jenkins-repo':
-    command => "wget -q -O - https://jenkins-ci.org/debian/jenkins-ci.org.key | sudo apt-key add -; sudo sh -c 'echo deb http://pkg.jenkins-ci.org/debian binary/ > /etc/apt/sources.list.d/jenkins.list'; sudo apt-get update -y"
-  }
+  exec { 'jenkins-update-source-list':
+    command => "sudo sh -c 'echo deb http://pkg.jenkins-ci.org/debian binary/ > /etc/apt/sources.list.d/jenkins.list'"
+  } ->
+
+  exec { 'jenkins-add-key':
+    command => 'wget -q -O - https://jenkins-ci.org/debian/jenkins-ci.org.key | sudo apt-key add -'
+  } ->
 
   package { $packages:
     ensure => present,
@@ -20,5 +23,4 @@ class tools::jenkins {
     hasrestart => true,
     require    => Package["jenkins"]
   }
-
 }
