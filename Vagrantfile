@@ -11,8 +11,8 @@ Vagrant.configure(2) do |config|
     config.vm.hostname = machine_name
     config.hostsupdater.aliases = [machine_name]
 
-    config.vm.network "forwarded_port", guest: 80, host: 8080
-    config.vm.network "forwarded_port", guest: 443, host: 4443
+    config.vm.network "forwarded_port", guest: 80, host: 8080, auto_correct: true
+    config.vm.network "forwarded_port", guest: 443, host: 4443, auto_correct: true
     config.vm.network "private_network", type: "dhcp"
 
     config.vm.synced_folder "./", "/vagrant", :nfs => true, :nfs => { :mount_options => ["dmode=777","fmode=777"] }
