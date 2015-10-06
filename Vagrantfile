@@ -3,24 +3,26 @@
 
 Vagrant.configure(2) do |config|
 
-    # default vm configuration
-    config.vm.box = config.user.vm.box if !config.user.vm.box.to_s.empty?
-    config.vm.box_url = config.user.vm.box_url if !config.user.vm.box_url.to_s.empty?
-    config.vm.hostname = config.user.vm.host.hostname if !config.user.vm.host.hostname.to_s.empty?
-    config.hostsupdater.aliases = config.user.vm.host.alias if !config.user.vm.host.alias.empty?
+    machine_name = 'demo.local'
 
-    config.vm.network "forwarded_port", guest: 80, host: config.user.vm.network.forwarded_port.http if !config.user.vm.network.forwarded_port.http.to_s.empty?
-    config.vm.network "forwarded_port", guest: 443, host: config.user.vm.network.forwarded_port.https if !config.user.vm.network.forwarded_port.https.to_s.empty?
-    config.vm.network :private_network, ip: config.user.vm.network.ip if !config.user.vm.network.ip.to_s.empty?
+    # default vm configuration
+    config.vm.box = 'puppetlabs/ubuntu-14.04-64-puppet'
+    config.vm.box_url = 'https://vagrantcloud.com/puppetlabs/ubuntu-14.04-64-puppet'
+    config.vm.hostname = machine_name
+    config.hostsupdater.aliases = [machine_name]
+
+    config.vm.network "forwarded_port", guest: 80, host: 8080
+    config.vm.network "forwarded_port", guest: 443, host: 4443
+    config.vm.network "private_network", type: "dhcp"
 
     config.vm.synced_folder "./", "/vagrant", :nfs => true, :nfs => { :mount_options => ["dmode=777","fmode=777"] }
-    config.vm.synced_folder config.user.app.code.directory, "/opt/web", :nfs => true, :nfs => { :mount_options => ["dmode=777","fmode=777"] } if !config.user.app.code.directory.to_s.empty?
+    config.vm.synced_folder "../code", "/opt/web", :nfs => true, :nfs => { :mount_options => ["dmode=777","fmode=777"] }
 
     # provider virtualbox
     config.vm.provider :virtualbox do |virtualbox|
-        virtualbox.gui = config.user.vm.show_gui if !config.user.vm.show_gui.to_s.empty?
-        virtualbox.customize ["modifyvm", :id, "--name", config.user.vm.name] if !config.user.vm.name.to_s.empty?
-        virtualbox.customize ["modifyvm", :id, "--memory", config.user.vm.memory] if !config.user.vm.memory.to_s.empty?
+        virtualbox.gui = false
+        virtualbox.customize ["modifyvm", :id, "--name", machine_name]
+        virtualbox.customize ["modifyvm", :id, "--memory", 1024]
     end
 
     # provisioner setup
