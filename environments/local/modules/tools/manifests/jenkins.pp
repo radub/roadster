@@ -12,6 +12,10 @@ class tools::jenkins {
     command => 'wget -q -O - https://jenkins-ci.org/debian/jenkins-ci.org.key | sudo apt-key add -'
   } ->
 
+  exec { 'jenkins-update-source':
+    command => '/usr/bin/apt-get update -y'
+  }
+
   package { $packages:
     ensure => present,
     require => Exec["apt-get update"]
