@@ -11,8 +11,9 @@ class bootstrap {
   }
 
   # fix locale
-  exec { 'locale-gen':
-    command => 'sudo locale-gen "en_US.UTF-8"'
+  file { "/etc/profile.d/fix-locale.sh":
+    ensure  => present,
+    content => 'export LANGUAGE=en_US.UTF-8; export LANG=en_US.UTF-8; export LC_ALL=en_US.UTF-8;'
   }
 
 }
