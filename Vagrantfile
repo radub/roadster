@@ -1,14 +1,14 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-Vagrant.configure(2) do |config|
+VMNAME = File.basename(File.expand_path('..', Dir.pwd)) + '.local'
 
-    machine_name = 'demo.local'
+Vagrant.configure(2) do |config|
 
     # default vm configuration
     config.vm.box = 'puppetlabs/ubuntu-14.04-64-puppet'
     config.vm.box_url = 'https://vagrantcloud.com/puppetlabs/ubuntu-14.04-64-puppet'
-    config.vm.hostname = machine_name
+    config.vm.hostname = VMNAME
 
     config.vm.network "forwarded_port", guest: 80, host: 8080, auto_correct: true
     config.vm.network "forwarded_port", guest: 443, host: 4443, auto_correct: true
@@ -20,7 +20,7 @@ Vagrant.configure(2) do |config|
     # provider virtualbox
     config.vm.provider :virtualbox do |virtualbox|
         virtualbox.gui = false
-        virtualbox.customize ["modifyvm", :id, "--name", machine_name]
+        virtualbox.customize ["modifyvm", :id, "--name", VMNAME]
         virtualbox.customize ["modifyvm", :id, "--memory", 1024]
     end
 
