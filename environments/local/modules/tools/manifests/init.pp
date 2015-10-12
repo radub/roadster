@@ -5,7 +5,8 @@ class tools {
     "curl",
     "vim",
     "htop",
-    "git-core"
+    "git-core",
+    "bash-completion"
   ]
 
   # install packages
