@@ -9,6 +9,7 @@ Vagrant.configure(2) do |config|
     config.vm.box = 'puppetlabs/ubuntu-14.04-64-puppet'
     config.vm.box_url = 'https://vagrantcloud.com/puppetlabs/ubuntu-14.04-64-puppet'
     config.vm.hostname = VMNAME
+    config.vm.define VMNAME do |t| end
 
     config.vm.network "forwarded_port", guest: 80, host: 8080, auto_correct: true
     config.vm.network "forwarded_port", guest: 443, host: 4443, auto_correct: true
