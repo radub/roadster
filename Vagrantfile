@@ -22,7 +22,7 @@ Vagrant.configure(2) do |config|
 
     # update /etc/hosts file on host machine
     unless Vagrant.has_plugin?('vagrant-hostmanager')
-        raise 'vagrant-hostmanager plugin is not installed!'
+        puts 'vagrant-hostmanager plugin is not installed!'
     else
         config.hostmanager.enabled = true
         config.hostmanager.manage_host = true
