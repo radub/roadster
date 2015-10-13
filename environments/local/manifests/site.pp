@@ -9,3 +9,4 @@ include php
 include mysql
 include tools
 include tools::jenkins
+include tools::memcached
