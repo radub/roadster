@@ -11,6 +11,9 @@ Spin-up bare bones VMs using different providers and custom user configurations
 - VirtualBox (5.0.0 or later)
 - Vagrant (1.7.4 or later)
 
+### Vagrant plugins
+- vagrant-hostmanager (1.6.1 or later)
+
 ### VirtualBox plugins
 - Guest Additions (4.3.22 or later)
 
