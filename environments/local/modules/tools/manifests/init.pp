@@ -6,7 +6,7 @@ class tools {
     "vim",
     "htop",
     "git-core",
-    "bash-completion"
+    "bash-completion",
   ]
 
   # install packages
@@ -20,6 +20,5 @@ class tools {
     path    => '/usr/bin:/usr/sbin',
     require => Package['curl'],
   }
-
 
 }
