@@ -40,10 +40,12 @@ drwxr-xr-x  10 user  staff   340 Oct 28 14:58 roadster
 
 You are now ready to spin-up the VM:
 ```
-$ vagrant up // start the vm
+$ vagrant up
 ```
+go grab a coffee ... :) then come back. You will be prompted for the administrator password. The script also takes care of updating the ````/etc/hosts```` file.
 
-And you're done! :)
+That's it!
+
 
 # Vagrant commands
 
