@@ -44,6 +44,8 @@ $ vagrant up
 ```
 go grab a coffee ... :) then come back. You will be prompted for the administrator password. The script also takes care of updating the ````/etc/hosts```` file.
 
+Open your browser and access: ```` http:\\project.local````.
+
 That's it!
 
 
