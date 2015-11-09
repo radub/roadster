@@ -5,7 +5,7 @@
 [travis]: http://travis-ci.org/radub/roadster
 
 # Purpose
-Spin-up bare bones VMs using different providers and custom user configurations 
+Spin-up bare bones VMs using different providers and custom user configurations. 
 
 # Prerequisites
 - VirtualBox (5.0.0 or later)
@@ -32,10 +32,10 @@ $ git clone git@github.com:radub/roadster.git
 right now if you run ````ls -la```` in the project directory you should get:
 ```
 total 0
-drwxr-xr-x   5 radone  staff   170 Oct 28 16:13 .
-drwxr-xr-x   6 radone  staff   204 Oct 28 14:53 ..
-drwxr-xr-x  31 radone  staff  1054 Nov  9 12:32 code
-drwxr-xr-x  10 radone  staff   340 Oct 28 14:58 roadster
+drwxr-xr-x   5 user  staff   170 Oct 28 16:13 .
+drwxr-xr-x   6 user  staff   204 Oct 28 14:53 ..
+drwxr-xr-x  31 user  staff  1054 Nov  9 12:32 code
+drwxr-xr-x  10 user  staff   340 Oct 28 14:58 roadster
 ```
 
 You are now ready to spin-up the VM:
