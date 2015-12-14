@@ -5,7 +5,7 @@
 [travis]: http://travis-ci.org/radub/roadster
 
 # Purpose
-Spin-up bare bones VMs using different providers and custom user configurations. 
+Boilerplate project for creating VMs with custom user configurations. 
 
 # Prerequisites
 - VirtualBox (5.0.0 or later)
