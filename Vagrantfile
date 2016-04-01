@@ -17,8 +17,8 @@ Vagrant.configure(2) do |config|
     config.vm.network "private_network", type: "dhcp"
 
     # config shared folders
-    config.vm.synced_folder "./", "/vagrant", :nfs => true, :nfs => { :mount_options => ["dmode=777","fmode=777"] }
-    config.vm.synced_folder "../code", "/opt/web", :nfs => true, :nfs => { :mount_options => ["dmode=777","fmode=777"] }
+    config.vm.synced_folder "./", "/vagrant", :nfs => true, :mount_options => ["dmode=777","fmode=777"]
+    config.vm.synced_folder "../code", "/opt/web", :nfs => true, :mount_options => ["dmode=777","fmode=777"]
 
     # update /etc/hosts file on host machine
     unless Vagrant.has_plugin?('vagrant-hostmanager')
