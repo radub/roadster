@@ -38,8 +38,9 @@ drwxr-xr-x  31 user  staff  1054 Nov  9 12:32 code
 drwxr-xr-x  10 user  staff   340 Oct 28 14:58 roadster
 ```
 
-You are now ready to spin-up the VM:
+You are now ready to spin-up the VM! Step into the car and start the engine!
 ```
+$ cd roadster
 $ vagrant up
 ```
 go grab a coffee ... :) then come back. You will be prompted for the administrator password. The script also takes care of updating the ````/etc/hosts```` file.
