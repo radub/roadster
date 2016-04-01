@@ -8,7 +8,7 @@ include apache
 include php
 include mysql
 include tools
-include tools::jenkins
-include tools::memcached
-include tools::ruby
-include tools::nodejs
+#include tools::jenkins
+#include tools::memcached
+#include tools::ruby
+#include tools::nodejs
